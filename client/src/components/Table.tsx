@@ -1,16 +1,16 @@
 import {memo} from 'react';
 import {useSelector} from 'react-redux';
 import {selectData} from '../store/cryptos.selectors';
-import {imageStyles} from './Table.css';
+import {tableStyles, imageStyles, dataRowStyles} from './Table.css';
 
 function Table() {
   const data = useSelector(selectData);
   console.log(data);
 
   return (
-    <table>
+    <table className={tableStyles}>
       <thead>
-        <tr>
+        <tr className={dataRowStyles}>
           <th>Name</th>
           <th>Price</th>
           <th>24h %</th>
@@ -36,7 +36,7 @@ function Table() {
             circSupply,
             graph,
           }) => (
-            <tr key={symbol}>
+            <tr key={symbol} className={dataRowStyles}>
               <td>
                 <img src={image} alt={name} className={imageStyles} />
                 <span>{name}</span>
